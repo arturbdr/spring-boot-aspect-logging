@@ -75,7 +75,7 @@ public class SampleUnloggedControllerATest {
         // THEN there should be no log
         String output = this.outputCapture.toString();
         then(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        then(output).doesNotContain("Whatever Name for Get");
+        then(output).doesNotContain("Whatever");
     }
 }
 

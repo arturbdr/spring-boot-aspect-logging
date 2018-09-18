@@ -75,6 +75,7 @@ public class SampleLoggedControllerBTest {
         // THEN there should be` log
         String output = this.outputCapture.toString();
         then(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        then(output).containsIgnoringCase("Whatever Name For Get");
+        then(output).contains("\"name\":\"Whatever Name For Get\"");
+        then(output).contains("\"age\":20");
     }
 }
