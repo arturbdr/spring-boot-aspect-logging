@@ -20,7 +20,7 @@ public class ControllerLogImpl {
     private final ObjectMapper objectMapper;
 
     @Around("@annotation(com.poc.springbootaspectlogging.config.annotation.ControllerLog)")
-    public void logControllerPayload(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object logControllerPayload(ProceedingJoinPoint joinPoint) throws Throwable {
         Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
         try {
             log.info("Method {} Arguments {}", method.getName(), objectMapper.writeValueAsString(joinPoint.getArgs()));
@@ -34,6 +34,8 @@ public class ControllerLogImpl {
             log.info("Method {} Response {}", method.getName(), objectMapper.writeValueAsString(response));
         } catch (Exception e) {
         }
+
+        return response;
     }
 
 
